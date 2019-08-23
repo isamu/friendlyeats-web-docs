@@ -1,4 +1,17 @@
-# 1. FriendlyEats について
+---
+id: dist
+{{if .Meta.Status}}status: {{.Meta.Status}}{{end}}
+{{if .Meta.Summary}}summary: {{.Meta.Summary}}{{end}}
+{{if .Meta.Author}}author: {{.Meta.Author}}{{end}}
+{{if .Meta.Categories}}categories: {{commaSep .Meta.Categories}}{{end}}
+{{if .Meta.Tags}}tags: {{commaSep .Meta.Tags}}{{end}}
+{{if .Meta.Feedback}}feedback link: {{.Meta.Feedback}}{{end}}
+{{if .Meta.GA}}analytics account: {{.Meta.GA}}{{end}}
+
+---
+# FriendlyEats
+
+## FriendlyEats について
 
 このcodelabでは、Firebase / Cloud Firestoreを使ったグルメサイトのwebアプリを作成します。
 Cloud Firestoreを学習するために最小限のプログラムをするだけでCloud Firestoreを使ったアプリケーションを作ることができます。
@@ -17,7 +30,7 @@ Cloud Firestoreを学習するために最小限のプログラムをするだ�
 - IDEやテキストエディタ。たとえば Emacs, vim, WebStorm, Atom, VS Code, Sublime などからお好きなものを選んでください
 
 
-# 2. Firebase projectの作成と設定
+## Firebase projectの作成と設定
 
 ### Firebase projectを作成する
 1. [Firebaseのコンソール](https://console.firebase.google.com)上で「プロジェクトを追加」をクリックします
@@ -74,7 +87,7 @@ Cloud Firestoreを学習するために最小限のプログラムをするだ�
 ![Firestore](https://codelabs.developers.google.com/codelabs/firestore-web/img/620b95f93bdb154a.png)
 
 
-# 3. サンプルのソースコード取得とインストール
+## サンプルのソースコード取得とインストール
 
 ### ソースコードを取得する
 以下のコマンドを使って GitHub レポジトリをクローンします
@@ -98,7 +111,7 @@ cd friendlyeats-web
 IDE（WebStorm、Atom、Sublime、Visual Studio Code ...）を使用している場合、📁friendlyeats-web ディレクトリを開くかインポートします。このディレクトリには、レストラン情報とオススメ情報を表示するアプリの未完成なモックコードが含まれています。チュートリアルを通してこのアプリを実装していくので、このモックコードを編集できる必要があります。
 
 
-# 4. Firebase CLI (コマンドラインツール)のインストール
+## Firebase CLI (コマンドラインツール)のインストール
 
 Firebaseコマンドラインインターフェイス（CLI）を使用すると、Webアプリをローカルで開発したり、Firebase Hostingにデプロイすることができます。
 
@@ -142,7 +155,7 @@ firebase use --add
 
 7 . コマンドラインの残りの指示に従ってください。
 
-# 5. ローカルでサーバを起動する
+## ローカルでサーバを起動する
 アプリで実際に作業を開始する準備ができました！アプリをローカルで実行しましょう！
 
 1 . 次のコマンドをローカルのCLIで実行します:
@@ -168,7 +181,7 @@ Firebase Hosting エミュレータがローカルで起動しています。 �
 ![WebApp](https://codelabs.developers.google.com/codelabs/firestore-web/img/6a5dd9ed3f3188e3.png)
 
 
-# 6. Cloud Firestoreへデータの書き込み
+## Cloud Firestoreへデータの書き込み
 
 このセクションでは、Cloud Firestoreにデータを書き込みます。Firebaseコンソール上で手動でデータ入力を行うこともできますが、Cloud Firestoreの基本的な書き込みを学習する為に、アプリ自体でデータ生成/入力を行います。
 
@@ -228,7 +241,7 @@ Firebaseコンソールの「Cloud Firestore」タブに移動すると、`resta
 次のセクションでは、Cloud Firestoreからデータを取得してアプリに表示する方法を学習します。
 
 
-# 7. Cloud Firestore のデータを表示
+## Cloud Firestore のデータを表示
 
 このセクションでは、Cloud Firestoreからデータを取得してアプリに表示する方法を学習します。 2つの重要な手順は、クエリの作成とスナップショットリスナーの追加です。このリスナーには、クエリに一致するすべての既存データが通知され、更新をリアルタイムで受信します。
 
@@ -292,7 +305,7 @@ Note: `Query.get()`メソッドを使用することにより、更新通知を�
 
 ![FriendlyEats](https://codelabs.developers.google.com/codelabs/firestore-web/img/89e58de6c41cee60.png)
 
-# 8. データを取得する
+## データを取得する
 
 ここまでは、`onSnapshot`を使用して更新をリアルタイムで取得する方法を実装しました。
 つぎは、アプリ内の特定のレストランをクリックした時にトリガーされる機能を実装しましょう。
@@ -316,7 +329,7 @@ FriendlyEats.prototype.getRestaurant = function(id) {
 現時点では評価を追加することはできませんが、この機能はチュートリアルの後半で実装します。
 
 
-# 9. データのソートと絞り込み
+## データのソートと絞り込み
 
 今のところ、アプリにはレストランのリストが表示されていますが、ユーザーがニーズに基づいてフィルタリングする方法はありません。このセクションでは、Cloud Firestoreの高度なクエリを使用してフィルタリングを有効にします。
 
@@ -376,7 +389,7 @@ The query requires an index. You can create it here: https://console.firebase.go
 
 次のセクションでは、このアプリケーションに必要なインデックスを作成してデプロイします。
 
-# 10. Cloud Firestoreにindexを追加
+## Cloud Firestoreにindexを追加
 
 アプリ内のすべてのパスを探索し、各インデックス作成リンクをたどる必要がない場合は、Firebase CLIを使用して多数のインデックスを一度に簡単に展開できます。
 
@@ -412,7 +425,7 @@ firebase deploy --only firestore:indexes
 
 > Tip: Cloud Firestoreのインデックスの詳細については、ドキュメントをご覧ください。
 
-# 11. トランザクションを使ってデータの書き込み
+## トランザクションを使ってデータの書き込み
 このセクションでは、ユーザーがレストランにレビューを書き込みする機能を実装します。
 
 今までのところ、書き込みはすべてアトミックで比較的単純です。もし書き込みエラーが発生した場合でも、おおむね単にユーザーに再試行を促すか、でなければアプリ自身が自動的に再試行するでしょう。
@@ -457,7 +470,7 @@ FriendlyEats.prototype.addRating = function(restaurantID, rating) {
 
 >警告：サーバーでトランザクションが失敗すると、コールバックも繰り返し再実行されます。アプリの状態を変更するロジックをトランザクションコールバック内に配置しないでください。
 
-# 12. データを守る
+## データを守る
 
 このチュートリアルの最初に、アプリのセキュリティルールをテストモードに設定し、自由に読み書きできるようにしました。
 実際のアプリケーションでは、望ましくないデータの読み込みや変更を防ぐために、よりきめ細かいルールを設定する必要があります。
@@ -512,7 +525,7 @@ firebase deploy --only firestore:rules
 
 > 重要：セキュリティルールの詳細については、[セキュリティルールのドキュメント](https://firebase.google.com/docs/firestore/security/get-started)をご覧ください。
 
-# 13. まとめ
+## まとめ
 このチュートリアルでは、Cloud Firestoreで基本的な、そして高度な読み取りと書き込みを行う方法と、セキュリティルールでデータアクセスを保護する方法を学びました。
 完全なソリューションは [quickstarts-js](https://github.com/firebase/quickstart-js/tree/master/firestore) リポジトリで見つけることができます。
 
